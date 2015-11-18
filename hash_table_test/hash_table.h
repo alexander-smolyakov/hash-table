@@ -1,4 +1,29 @@
 template <size_t S, typename K, typename T>
+class HashTable
+{
+public:
+
+	HashTable();
+	HashTable(const HashTable&);
+	~HashTable();
+	HashTable& operator = (const HashTable&);
+
+	bool Insert(K, T);
+	int Search(K);
+	void Remove(int);
+
+private:
+	// methods
+	int hashFunction(K);
+	int linearInvestigation(size_t, size_t);
+
+	// fields
+	enum cellStatus { Empty, Busy, Delete };
+	struct cell { cellStatus status; K key; T data; };
+	cell* hashTable_;
+};
+
+template <size_t S, typename K, typename T>
 HashTable <S, K, T> ::HashTable()
 {
 	hashTable_ = new cell[S];
