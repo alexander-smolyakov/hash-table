@@ -15,7 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\%40Dev\GitHub\Hash-Table\hash_table_test\hash_table.h">
+    <ClInclude Include="HashTable.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\%40Dev\GitHub\Hash-Table\Class_HashTable\HashTable_Implementation.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
   </ItemGroup>

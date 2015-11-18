@@ -11,7 +11,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\%40Dev\GitHub\Hash-Table\hash_table_test\hash_table.h" />
+    <ClInclude Include="..\..\..\..\%40Dev\GitHub\Hash-Table\Class_HashTable\HashTable_Implementation.h" />
+    <ClInclude Include="HashTable.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{2C4C5E40-8ABA-4EFE-A034-B5BE1C5D73AB}</ProjectGuid>
