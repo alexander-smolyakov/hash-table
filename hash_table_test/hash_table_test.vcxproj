@@ -10,6 +10,9 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\%40Dev\GitHub\Hash-Table\hash_table_test\hash_table.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{2C4C5E40-8ABA-4EFE-A034-B5BE1C5D73AB}</ProjectGuid>
     <RootNamespace>hash_table_test</RootNamespace>
@@ -63,14 +66,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="main.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="custom_types\custom_types.h" />
-    <ClInclude Include="hash_table\hash_table.h" />
-    <ClInclude Include="hash_table\hash_table_impl.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
