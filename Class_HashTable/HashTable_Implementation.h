@@ -3,8 +3,8 @@ HashTable <S, K, T> ::HashTable()
 {
 	hashTable_ = new cell[S];
 
-	for (size_t count = 0; count < S; count++)
-		hashTable_[count].status = Empty;
+	for (size_t i = 0; i < S; i++)
+		hashTable_[i].status = Empty;
 }
 
 template <size_t S, typename K, typename T>
@@ -26,8 +26,8 @@ template <size_t S, typename K, typename T>
 HashTable <S, K, T>& HashTable <S, K, T> :: operator = (const HashTable& leftValue)
 {
 	if (this != &leftValue)
-		for (size_t count = 0; count < S; count++)
-			hashTable_[count] = leftValue.hashTable_[count];
+		for (size_t i = 0; i < S; i++)
+			hashTable_[i] = leftValue.hashTable_[i];
 
 	return*this;
 }
@@ -35,8 +35,6 @@ HashTable <S, K, T>& HashTable <S, K, T> :: operator = (const HashTable& leftVal
 template <size_t S, typename K, typename T>
 int HashTable <S, K, T> ::hashFunction(K key)
 {
-	const double A = (sqrt(5) - 1) / 2;
-
 	hash<K> hash;
 
 	int value = (int)floor(S*(hash(key)*A - floor(hash(key)*A)));
@@ -78,12 +76,12 @@ bool HashTable <S, K, T> ::Insert(K key, T data)
 template <size_t S, typename K, typename T>
 int HashTable <S, K, T> ::Search(K key)
 {
-	int index(0), count(0);
+	int index(0), i(0);
 	size_t hashValue = hashFunction(key);
 
 	do
 	{
-		index = linearInvestigation(hashValue, count);
+		index = linearInvestigation(hashValue, i);
 
 		if (hashTable_[index].status == Busy)
 		{
@@ -91,8 +89,8 @@ int HashTable <S, K, T> ::Search(K key)
 				return index;
 		}
 
-		count++;
-	} while (hashTable_[index].status != Empty && count != S);
+		i++;
+	} while (hashTable_[index].status != Empty && i != S);
 
 	return -1;
 }

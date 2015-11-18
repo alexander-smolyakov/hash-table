@@ -1,6 +1,9 @@
 #ifndef HASHTABLE_H
 #define HASHTABLE_H
 
+// A = (sqrt(5) - 1) / 2
+const double A = 0.6180339887498948;
+
 template <size_t S, typename K, typename T>
 class HashTable
 {
