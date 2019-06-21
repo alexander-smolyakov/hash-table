@@ -15,7 +15,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="HashTable.h">
+    <ClInclude Include="stuct_account.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="struct_profile.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="hash_table.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
   </ItemGroup>
