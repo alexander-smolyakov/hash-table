@@ -18,8 +18,10 @@
     <ClInclude Include="HashTable.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\%40Dev\GitHub\Hash-Table\Class_HashTable\HashTable_Implementation.h">
-      <Filter>Заголовочные файлы</Filter>
-    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
