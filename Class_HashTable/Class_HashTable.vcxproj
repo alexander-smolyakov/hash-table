@@ -12,6 +12,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HashTable.h" />
+    <ClInclude Include="struct_profile.h" />
+    <ClInclude Include="stuct_account.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
