@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="HashTable.h" />
+    <ClInclude Include="hash_table.h" />
     <ClInclude Include="struct_profile.h" />
     <ClInclude Include="stuct_account.h" />
   </ItemGroup>

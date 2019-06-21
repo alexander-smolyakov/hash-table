@@ -7,31 +7,33 @@ const double A = 0.6180339887498948;
 template <size_t S, typename K, typename T>
 class HashTable
 {
+// standart part
 public:
 	HashTable();
 	HashTable(const HashTable&);
 	~HashTable();
+	
 	HashTable& operator = (const HashTable&);
 
-
-	bool Insert(K, T);
-	int Search(K);
-	void Remove(int);
-
-private:
-	// methods
-	int hashFunction(K);
-	int linearInvestigation(size_t, size_t);
+// methods
+public:
+	bool Insert(K, T); // Insert data in table
+	int Search(K); // Search by key
+	void Remove(int); // Remove data on index 
 
 private:
-	// fields
+	int hashFunction(K); // Ñalculating hash values
+	int linearInvestigation(size_t, size_t); // Linear probing for resolving collisions
+
+// fields
+private:
 	enum cellStatus { Empty, Busy, Delete };
 	struct cell { cellStatus status; K key; T data; };
 	cell* hashTable_;
 };
 
 template <size_t S, typename K, typename T>
-HashTable <S, K, T> ::HashTable()
+HashTable <S, K, T> :: HashTable()
 {
 	hashTable_ = new cell[S];
 
@@ -40,7 +42,7 @@ HashTable <S, K, T> ::HashTable()
 }
 
 template <size_t S, typename K, typename T>
-HashTable <S, K, T> ::HashTable(const HashTable& copy)
+HashTable <S, K, T> :: HashTable(const HashTable& copy)
 {
 	hashTable_ = new cell[S];
 
@@ -61,27 +63,25 @@ HashTable <S, K, T>& HashTable <S, K, T> :: operator = (const HashTable& leftVal
 		for (size_t i = 0; i < S; i++)
 			hashTable_[i] = leftValue.hashTable_[i];
 
-	return*this;
+	return *this;
 }
 
 template <size_t S, typename K, typename T>
-int HashTable <S, K, T> ::hashFunction(K key)
+int HashTable <S, K, T> :: hashFunction(K key)
 {
 	hash<K> hash;
-
-	int value = (int)floor(S * (hash(key) * A - floor(hash(key) * A)));
-
+	int value = static_cast<int>(floor(S *(hash(key)*A - floor(hash(key)*A))));
 	return value;
 }
 
 template <size_t S, typename K, typename T>
-int HashTable <S, K, T> ::linearInvestigation(size_t hashValue, size_t count)
+int HashTable <S, K, T> :: linearInvestigation(size_t hashValue, size_t count)
 {
 	return (hashValue + count) % S;
 }
 
 template <size_t S, typename K, typename T>
-bool HashTable <S, K, T> ::Insert(K key, T data)
+bool HashTable <S, K, T> :: Insert(K key, T data)
 {
 	size_t count(0), index(0);
 	size_t hashValue = hashFunction(key);
@@ -106,7 +106,7 @@ bool HashTable <S, K, T> ::Insert(K key, T data)
 }
 
 template <size_t S, typename K, typename T>
-int HashTable <S, K, T> ::Search(K key)
+int HashTable <S, K, T> :: Search(K key)
 {
 	int index(0), i(0);
 	size_t hashValue = hashFunction(key);
@@ -128,7 +128,7 @@ int HashTable <S, K, T> ::Search(K key)
 }
 
 template <size_t S, typename K, typename T>
-void HashTable <S, K, T> ::Remove(int index)
+void HashTable <S, K, T> :: Remove(int index)
 {
 	if (hashTable_[index].status != Empty)
 	{
@@ -154,8 +154,6 @@ void HashTable <S, K, T> ::Remove(int index)
 					index = j;
 				}
 			}
-
-
 		}
 	}
 }
