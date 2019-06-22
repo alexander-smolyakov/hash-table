@@ -1,5 +1,5 @@
-#ifndef HASHTABLE_H
-#define HASHTABLE_H
+#ifndef HASH_TABLE_H
+#define HASH_TABLE_H
 
 // A = (sqrt(5) - 1) / 2
 const double A = 0.6180339887498948;
@@ -122,6 +122,7 @@ int HashTable <S, K, T> :: Search(K key)
 		}
 
 		i++;
+
 	} while (hashTable_[index].status != Empty && i != S);
 
 	return -1;
@@ -133,7 +134,7 @@ void HashTable <S, K, T> :: Remove(int index)
 	if (hashTable_[index].status != Empty)
 	{
 		hashTable_[index].status = Delete;
-		int j(index); cell BackUpRecrod;
+		int j(index); 
 
 		while (true)
 		{
@@ -148,9 +149,7 @@ void HashTable <S, K, T> :: Remove(int index)
 				if ((j > index && (k <= index || k > j)) ||
 					(j < index && (k <= index && k > j)))
 				{
-					BackUpRecrod = hashTable_[index];
-					hashTable_[index] = hashTable_[j];
-					hashTable_[j] = BackUpRecrod;
+					swap(hashTable_[index], hashTable_[j]);
 					index = j;
 				}
 			}
