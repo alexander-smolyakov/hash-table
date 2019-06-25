@@ -1,5 +1,4 @@
-project(hash_table)
+cmake_minimum_required(VERSION 3.12)
+project(Hash-Table)
 
-file(GLOB SOURCES "src/*.cpp")
-
-add_executable(hash_table ${SOURCES})
+add_executable(Hash-Table main.cpp hash_table.h struct_profile.h stuct_account.h)
