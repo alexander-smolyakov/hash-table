@@ -2,20 +2,6 @@ language: cpp
 matrix:
   include:
     - os: linux
-      script: make travis
-    - os: linux
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - g++-4.9
-            - gcc-4.9
-      env:
-         - COMPILER="CC=gcc-4.9 && CXX=g++-4.9"
-      before_install: eval "${COMPILER}"
-      script: make travis
-    - os: linux
       addons:
         apt:
           sources:
@@ -41,12 +27,6 @@ matrix:
       script: make travis
     - os: linux
       compiler: clang
-      script: make travis
-    - os: osx
-      script: make travis
-    - os: osx
-      osx_image: xcode10
-      script: make travis
     - os: windows
       install: choco install mingw
       script: mingw32-make travis
