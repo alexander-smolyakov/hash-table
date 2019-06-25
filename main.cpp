@@ -10,8 +10,11 @@ using namespace std;
 
 int main()
 {
-	vector<Account> Accounts;
+	vector<Account> Accounts; 
 	vector<Profile> Profiles;
+
+	HashTable<20, int, Account> Table_Accounts;
+	HashTable<40, string, Profile> Table_Profiles;
 
 	return 0;
 }
