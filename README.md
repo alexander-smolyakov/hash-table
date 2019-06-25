@@ -1,6 +1,7 @@
 # Hash table with open addressing
 > Implementation of hash table with open addressing and linear probing for resolving collisions.
 
+[![Build Status](https://travis-ci.org/sphinx414/Hash-Table.svg?branch=master)](https://travis-ci.org/sphinx414/Hash-Table)
 ## Table of Contents
 - [Installation](#installation)
 - [Features](#features)
