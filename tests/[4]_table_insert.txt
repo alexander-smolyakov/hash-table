@@ -1,0 +1,11 @@
+[index] = (status) <key, [data]>
+[0] (1) <(0 | prize crusty), [prize crusty, VGXnP5,~+AL@]>
+[1] (1) <(0 | thar barnacle), [thar barnacle, x2(+S>TVQ7i|]>
+[2] (1) <(0 | Kaned), [Kaned, rDIoWt~o3pYz]>
+[3] (1) <(3 | gross bam bam), [gross bam bam, ?*T?>iHBhH`0]>
+[4] (1) <(3 | eagle awesome), [eagle awesome, `{8QySr9^L&I]>
+[5] (1) <(5 | captain batten dow), [captain batten dow, gR[!ru=?]g,H]>
+[6] (1) <(4 | Londeie), [Londeie, N-J1mwh`nbEK]>
+[7] (1) <(7 | gross head), [gross head, S`aXYAF:jnf(]>
+[8] (1) <(8 | chain shot shiver), [chain shot shiver, Hfb'-PFUvNBq]>
+[9] (1) <(8 | insertTest), [insertTest, insertTest]>

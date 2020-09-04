@@ -1,8 +1,0 @@
-language: cpp
-matrix:
-  include:
-    - os: windows
-      script: 
-        - mkdir build && cd build
-        - cmake .. 
-        - cmake --build .
