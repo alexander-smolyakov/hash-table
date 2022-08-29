@@ -1,0 +1,2 @@
+add_executable(example_app example_app.cpp)
+target_compile_features(example_app PRIVATE cxx_std_17)

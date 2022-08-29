@@ -1,18 +1,21 @@
 #ifndef HASH_TABLE_H
 #define HASH_TABLE_H
 
-#include "math.h"
+#include <cmath>
 #include <fstream>
 #include <string>
 
+#include "cell.hpp"
+
 using namespace std;
 
-template <size_t S, typename K, typename T> class HashTable {
-public:
+template <size_t S, typename K, typename T>
+class HashTable {
+ public:
   HashTable();
-  HashTable(const HashTable &);
+  HashTable(HashTable const&);
   ~HashTable();
-  HashTable &operator=(const HashTable &);
+  HashTable& operator=(HashTable const&);
 
   bool Insert(K, T);
   int Search(K);
@@ -20,41 +23,36 @@ public:
 
   void PrintTable(string);
 
-private:
-  // methods
+ private:
   int hashFunction(K);
   int linearInvestigation(size_t, size_t);
-  // field
-  enum cellStatus { Empty, Busy, Delete };
-  struct cell {
-    cellStatus status;
-    K key;
-    T data;
-  };
-  cell *hashTable_;
+
+ private:
+  Cell<T, K>* hashTable_;
 };
 
-template <size_t S, typename K, typename T> HashTable<S, K, T>::HashTable() {
-  hashTable_ = new cell[S];
+template <size_t S, typename K, typename T>
+HashTable<S, K, T>::HashTable() {
+  hashTable_ = new Cell<T, K>[S];
 
-  for (size_t count = 0; count < S; count++)
-    hashTable_[count].status = Empty;
+  for (size_t count = 0; count < S; count++) hashTable_[count].status = Empty;
 }
 
 template <size_t S, typename K, typename T>
-HashTable<S, K, T>::HashTable(const HashTable &copy) {
-  hashTable_ = new cell[S];
+HashTable<S, K, T>::HashTable(HashTable const& copy) {
+  hashTable_ = new Cell<T, K>[S];
 
   for (size_t count = 0; count < S; count++)
     hashTable_[count] = copy.hashTable_[count];
 }
 
-template <size_t S, typename K, typename T> HashTable<S, K, T>::~HashTable() {
+template <size_t S, typename K, typename T>
+HashTable<S, K, T>::~HashTable() {
   delete[] hashTable_;
 }
 
 template <size_t S, typename K, typename T>
-HashTable<S, K, T> &HashTable<S, K, T>::operator=(const HashTable &leftValue) {
+HashTable<S, K, T>& HashTable<S, K, T>::operator=(HashTable const& leftValue) {
   if (this != &leftValue)
     for (size_t count = 0; count < S; count++)
       hashTable_[count] = leftValue.hashTable_[count];
@@ -79,7 +77,7 @@ void HashTable<S, K, T>::PrintTable(string fileName) {
 
 template <size_t S, typename K, typename T>
 int HashTable<S, K, T>::hashFunction(K key) {
-  const double A = (sqrt(5) - 1) / 2;
+  double const A = (sqrt(5) - 1) / 2;
 
   hash<K> hash;
 
@@ -122,9 +120,8 @@ int HashTable<S, K, T>::Search(K key) {
   do {
     index = linearInvestigation(hashValue, count);
 
-    if (hashTable_[index].status == Busy) {
-      if (hashTable_[index].key == key)
-        return index;
+    if (hashTable_[index].status == Busy && hashTable_[index].key == key) {
+      return index;
     }
 
     count++;
@@ -138,7 +135,7 @@ void HashTable<S, K, T>::Remove(int index) {
   if (hashTable_[index].status != Empty) {
     hashTable_[index].status = Delete;
     int j(index);
-    cell BackUpRecrod;
+    Cell<T, K> BackUpRecrod;
 
     while (true) {
       j = (j + 1) % S;
