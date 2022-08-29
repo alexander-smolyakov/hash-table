@@ -1,6 +1,8 @@
 #ifndef PROFILE_HPP
 #define PROFILE_HPP
 
+#include <fmt/format.h>
+
 #include <iostream>
 #include <string>
 
@@ -10,8 +12,9 @@ struct Profile {
   int id;
 };
 
-std::ostream& operator<<(std::ostream& stream, Profile const& pro) {
-  stream << pro.firstName << " " << pro.lastName << " (" << pro.id << ")";
+std::ostream& operator<<(std::ostream& stream, Profile const& val) {
+  stream << fmt::format("first_name = {0}, second_name = {1}, id = {3}",
+                        val.firstName, val.lastName, val.id);
   return stream;
 }
 
@@ -24,10 +27,10 @@ namespace std {
 template <>
 struct hash<Profile> {
  public:
-  size_t operator()(Profile const& pro) const {
-    size_t h1 = hash<string>()(pro.firstName);
-    size_t h2 = hash<string>()(pro.lastName);
-    return h1 + (h2 << 1) + pro.id;
+  size_t operator()(Profile const& val) const {
+    size_t h1 = hash<string>()(val.firstName);
+    size_t h2 = hash<string>()(val.lastName);
+    return h1 + (h2 << 1) + val.id;
   }
 };
 }  // namespace std

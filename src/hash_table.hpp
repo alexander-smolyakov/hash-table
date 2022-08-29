@@ -5,7 +5,7 @@
 #include <fstream>
 #include <string>
 
-#include "cell.hpp"
+#include "cell_struct.hpp"
 
 using namespace std;
 
@@ -77,11 +77,10 @@ void HashTable<S, K, T>::PrintTable(string fileName) {
 
 template <size_t S, typename K, typename T>
 int HashTable<S, K, T>::hashFunction(K key) {
-  double const A = (sqrt(5) - 1) / 2;
+  const double A = 0.6180339887498948;  // A = (sqrt(5) - 1) / 2
 
-  hash<K> hash;
-
-  int value = (int)floor(S * (hash(key) * A - floor(hash(key) * A)));
+  size_t const hash_value = hash<K>{}(key);
+  int value = (int)floor(S * (hash_value * A - floor(hash_value * A)));
 
   return value;
 }

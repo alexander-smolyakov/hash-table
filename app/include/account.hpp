@@ -1,6 +1,8 @@
 #ifndef ACCOUNT_HPP
 #define ACCOUNT_HPP
 
+#include <fmt/format.h>
+
 #include <iostream>
 #include <string>
 
@@ -9,9 +11,8 @@ struct Account {
   std::string pass;
 };
 
-std::ostream& operator<<(std::ostream& stream, Account const& acc) {
-  stream << acc.nick << ", " << acc.pass;
-  return stream;
+std::ostream& operator<<(std::ostream& stream, Account const& val) {
+  return stream << fmt::format("nick = {0}, pass = {1}", val.nick, val.pass);
 }
 
 bool operator==(Account const& left, Account const& right) {
@@ -22,9 +23,9 @@ namespace std {
 template <>
 struct hash<Account> {
  public:
-  size_t operator()(Account const& acc) const {
-    size_t h1 = hash<string>()(acc.nick);
-    size_t h2 = hash<string>()(acc.pass);
+  size_t operator()(Account const& val) const {
+    size_t h1 = hash<string>()(val.nick);
+    size_t h2 = hash<string>()(val.pass);
     return h1 ^ (h2 << 1);
   }
 };
