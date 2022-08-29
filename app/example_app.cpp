@@ -1,5 +1,5 @@
-#include "hash_table.hpp"
-#include "account.hpp"
+#include <hash_table.hpp>
+#include <example_app/account.hpp>
 
 const size_t baseSize = 10;
 
@@ -15,9 +15,9 @@ int main() {
     AccountBase.Insert(inputData.nick, inputData);
   } 
 
-  AccountBase.PrintTable("tests/[1]_table_init.txt");
+  AccountBase.PrintTable("[1]_table_init.txt");
   AccountBase.Remove(6);
-  AccountBase.PrintTable("tests/[2]_table_remove.txt");
+  AccountBase.PrintTable("[2]_table_remove.txt");
 
   return 0;
 }
